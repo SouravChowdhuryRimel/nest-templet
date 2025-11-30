@@ -1,0 +1,25 @@
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  BANNED
+  PENDING
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  MODERATOR
+  PROVIDER
+}
+
+model User {
+  id        String     @id @default(uuid())
+  status    UserStatus
+  role      UserRole
+  name      String
+  email     String     @unique
+  password  String
+  isDeleted Boolean    @default(false)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
